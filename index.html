@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+      <title>
+        Triomino
+      </title>
+
+      <style>
+        .body {
+          background-color: rgb(131, 100, 100);
+        }
+
+        .triomino {
+
+          font-size: 40px;
+          text-align: center;
+        }
+
+        .moGewonnen, .williGewonnen {
+          text-align: center;
+          font-size: 40px;
+          color: red;
+        }
+        
+
+        .eingabeMo, .eingabeWilli {
+        font-size: 15px;
+        margin: auto;
+        display: block;
+        margin-bottom: 20px;
+        }
+
+        .returnMo, .returnWilli {
+        
+        margin: auto;
+        display: block;
+        }
+
+        .js-total-Mo {
+
+          font-size: 20px;
+          color: brown;
+          text-align: center;
+          margin-bottom: 30px;
+          
+        }
+        
+        .js-total-Willi {
+
+        font-size: 20px;
+        color: blue;
+        text-align: center;
+
+        }
+      
+      
+        
+      </style>
+
+  </head>
+
+  <body>
+
+   <p class="triomino">TRIOMINO</p> 
+    <p class="moGewonnen"></p>
+    <p class="williGewonnen"></p>
+
+    <input type="number" placeholder="eingabe Mo" class="eingabeMo">
+    
+    
+    <button class="returnMo" onclick="
+      calculateEingabe('Mo');
+      ">Eingabe Mo</button>
+
+    <p class="js-total-Mo">Punkte Gesamt: 0</p>
+
+
+
+  
+    <input type="number" placeholder="eingabe Willi" class="eingabeWilli" id="idMo">
+    
+    <button class="returnWilli" onclick="
+    calculateEingabe('Willi');
+    ">Eingabe Willi</button>
+
+  <p class="js-total-Willi">Punkte Gesamt: 0</p>
+  
+
+
+    <script>
+      
+      let punkteGesamtMo = 0;
+      let punkteGesamtWilli = 0;
+
+      function calculateEingabe(MoWilli) {
+
+        if (MoWilli === 'Mo') {
+        const inputElement = document.querySelector('.eingabeMo');
+        let punkte = Number(inputElement.value);
+        punkteGesamtMo = punkteGesamtMo + punkte
+        // console.log(punkteGesamtMo);
+
+        document.querySelector('.js-total-Mo')
+          .innerHTML = `Punkte Gesamt: ${punkteGesamtMo}`;
+        
+         
+          
+
+      } else if (MoWilli === 'Willi') {
+        const inputElement = document.querySelector('.eingabeWilli');
+        let punkte = Number(inputElement.value);
+        punkteGesamtWilli = punkteGesamtWilli + punkte
+        // console.log(punkteGesamtWilli);
+
+        document.querySelector('.js-total-Willi')
+          .innerHTML = `Punkte Gesamt: ${punkteGesamtWilli}`;
+
+        if (punkteGesamtWilli >= 400 && punkteGesamtWilli > punkteGesamtMo) {
+          document.querySelector('.williGewonnen')
+          .innerHTML = `Willi hat (schon wieder) gewonnen`;
+        }
+        if (punkteGesamtMo >= 400 && punkteGesamtMo > punkteGesamtWilli) {
+          document.querySelector('.moGewonnen')
+          .innerHTML = `HaHaHa - Mo hat gewonnen`;
+          
+          }
+      }
+    }
+  
+
+
+    </script>
+
+  </body>
+
+
+
+</html>
+
