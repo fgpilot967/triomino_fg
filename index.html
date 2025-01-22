@@ -5,143 +5,142 @@
   <head>
 
       <title>
-        Triomino
+        TRIOMINO
       </title>
 
       <style>
-        .body {
-          background-color: rgb(131, 100, 100);
-        }
+        body {
+          background-color: rgb(194, 183, 183);
+          }
 
+          img {
+            width: 40%;
+          }
         .triomino {
-          margin-bottom: 0;
           font-size: 40px;
           text-align: center;
+        }
+       
+        .flexbox {
+        
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          text-align: center; 
+        }
+
+        .return {
+          border-radius: 8px;
+          width: 200px;
+          font-size: 26px;
+          height: 40px;
+          margin-left: 20px;
+          margin-right: 20px;
+        }
+
+        .eingabeMo, .eingabeWilli {
+          font-size: 20px;
+          border-radius: 8px;
+          width: 120px;
+        }
+        
+        .js-total-Mo, .js-total-Willi {
+        border-color: brown;
+        border-style: double;
+        padding: 10px 10px 10px 10px;
+        font-size: 26px;
         }
 
         .moGewonnen, .williGewonnen {
+          color: brown;
+          font-size: 50px;
+          size: 80px;
           text-align: center;
-          font-size: 40px;
-          color: red;
         }
         
-
-        .eingabeMo, .eingabeWilli {
-        background-color: antiquewhite;
-        font-size: 30px;
-        margin-top: 0px;
-        margin-left: 100px;
-        /*margin: auto;*/
-        display: block;
-        margin-bottom: 20px;
-        }
-
-        .returnMo, .returnWilli {
-        font-size: 30px;
-        border-radius: 20px;
-        margin: 50px auto;
-        display: block;
-        width: 300px;
-        background-color: rgb(188, 163, 130);
-        color: aliceblue;
-        }
-
-        .js-total-Mo {
-
-          font-size: 40px;
-          color: brown;
-          text-align: right;
-          margin-bottom: 20px;
-          margin-right: 170px;
-          margin-top: 0px;
+        .reset {
+          margin-left: 120px;
           
         }
-        
-        .js-total-Willi {
 
-        font-size: 40px;
-        color: blue;
-        text-align: right;
-        margin-right: 170px;
-        margin-top: 0px;
-
-        }
-      
-      
-        
       </style>
 
   </head>
 
   <body>
+    
+    
+    <p class="triomino">
+      TRIOMINO
+    </p>
 
-   <p class="triomino">TRIOMINO</p> 
+    <div class="flexbox">
+      <div><img src="/images/img_0753.jpg" alt="die kleine Mo"></div>
+      
+      <div>
+        <input type="number" placeholder="Zahl" class="eingabeMo"
+        onfocus="this.value=''">
+      
+        <p>Punkte Gesamt:</p>
+        <p class="js-total-Mo">0</p>
+      </div>
+
+      <div class="return"> 
+        <button  onclick="
+        calculateEingabe();
+        ">Eingabe</button>
+        </div>
+
+
+      <div>
+        <input type="number" placeholder="Zahl" class="eingabeWilli"
+        onfocus="this.value=''">
+      
+        <p>Punkte Gesamt:</p>
+        <p class="js-total-Willi">0</p>
+        
+      </div>
+      <div><img src="/images/img_0754.jpg" alt="der kleine Wille"></div>
+  </div>
     <p class="moGewonnen"></p>
     <p class="williGewonnen"></p>
-
-    <input type="number" placeholder="eingabe Mo" class="eingabeMo">
-    
-    
-    <button class="returnMo" onclick="
-      calculateEingabe('Mo');
-      ">Eingabe Mo</button>
-
-    <p class="js-total-Mo">Punkte Gesamt: 0</p>
-
-
-
-  
-    <input type="number" placeholder="eingabe Willi" class="eingabeWilli" id="idMo">
-    
-    <button class="returnWilli" onclick="
-    calculateEingabe('Willi');
-    ">Eingabe Willi</button>
-
-  <p class="js-total-Willi">Punkte Gesamt: 0</p>
-  
-
+    <br>
+    <button class="reset" onclick="location.reload()">Neues Spiel</button>
 
     <script>
-      
-      let punkteGesamtMo = 0;
-      let punkteGesamtWilli = 0;
 
-      function calculateEingabe(MoWilli) {
+            let punkteGesamtMo = 0;
+            let punkteGesamtWilli = 0;
 
-        if (MoWilli === 'Mo') {
-        const inputElement = document.querySelector('.eingabeMo');
-        let punkte = Number(inputElement.value);
-        punkteGesamtMo = punkteGesamtMo + punkte
-        // console.log(punkteGesamtMo);
+            function calculateEingabe() {
 
-        document.querySelector('.js-total-Mo')
-          .innerHTML = `Punkte Gesamt: ${punkteGesamtMo}`;
-        
-         
-          
+              const inputElementMo = document.querySelector('.eingabeMo');
+              let punkteMo = Number(inputElementMo.value);
+              punkteGesamtMo = punkteGesamtMo + punkteMo
+              
+              document.querySelector('.js-total-Mo')
+                .innerHTML = `${punkteGesamtMo}`;  
 
-      } else if (MoWilli === 'Willi') {
-        const inputElement = document.querySelector('.eingabeWilli');
-        let punkte = Number(inputElement.value);
-        punkteGesamtWilli = punkteGesamtWilli + punkte
-        // console.log(punkteGesamtWilli);
+                const inputElementWilli = document.querySelector('.eingabeWilli');
+                let punkteWilli = Number(inputElementWilli.value);
+                punkteGesamtWilli = punkteGesamtWilli + punkteWilli
 
-        document.querySelector('.js-total-Willi')
-          .innerHTML = `Punkte Gesamt: ${punkteGesamtWilli}`;
+                document.querySelector('.js-total-Willi')
+                  .innerHTML = `${punkteGesamtWilli}`;
 
-        if (punkteGesamtWilli >= 400 && punkteGesamtWilli > punkteGesamtMo) {
-          document.querySelector('.williGewonnen')
-          .innerHTML = `Willi hat (schon wieder) gewonnen`;
-        }
-        if (punkteGesamtMo >= 400 && punkteGesamtMo > punkteGesamtWilli) {
-          document.querySelector('.moGewonnen')
-          .innerHTML = `HaHaHa - Mo hat gewonnen`;
-          
-          }
-      }
-    }
-  
+                if (punkteGesamtWilli >= 400 && punkteGesamtWilli > punkteGesamtMo) {
+                  document.querySelector('.williGewonnen')
+                  .innerHTML = `Willi hat (schon wieder) gewonnen`;
+                }
+                if (punkteGesamtMo >= 400 && punkteGesamtMo > punkteGesamtWilli) {
+                  document.querySelector('.moGewonnen')
+                  .innerHTML = `HaHaHa - Mo hat gewonnen`;
+                  
+                }
+            }
 
+
+     
 
     </script>
 
