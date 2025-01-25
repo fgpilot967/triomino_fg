@@ -14,7 +14,8 @@
           }
 
           img {
-            width: 40%;
+            width: 100px;
+            border-radius: 20px;
           }
         .triomino {
           font-size: 40px;
@@ -24,31 +25,28 @@
         .flexbox {
         
           display: flex;
-          flex-direction: row;
           justify-content: space-evenly;
           text-align: center; 
         }
 
         .return {
-          border-radius: 8px;
-          width: 200px;
-          font-size: 26px;
-          height: 40px;
-          margin-left: 20px;
-          margin-right: 20px;
+          border-radius: 10px;
+          width: 100px;
+          font-size: 20px;
+          
         }
 
         .eingabeMo, .eingabeWilli {
           font-size: 20px;
           border-radius: 8px;
-          width: 120px;
+         
         }
         
         .js-total-Mo, .js-total-Willi {
         border-color: brown;
         border-style: double;
         padding: 10px 10px 10px 10px;
-        font-size: 26px;
+        font-size: 30px;
         }
 
         .moGewonnen, .williGewonnen {
@@ -85,8 +83,8 @@
         <p class="js-total-Mo">0</p>
       </div>
 
-      <div class="return"> 
-        <button  onclick="
+      <div> 
+        <button  class="return" onclick="
         calculateEingabe();
         ">Eingabe</button>
         </div>
